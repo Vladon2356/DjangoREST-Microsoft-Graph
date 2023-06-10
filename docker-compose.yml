@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:13.0-alpine
+    restart: always
+    env_file: .env.db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+  backend:
+    image: "backend"
+    #    restart: always
+    build:
+      context: .
+    env_file: .env
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    volumes:
+      - .:/home/app/web
+      - static_volume:/home/app/web/staticfiles
+      - media_volume:/home/app/web/media
+    command: [ "sh","./start" ]
+volumes:
+  media_volume:
+  postgres_data:
+  static_volume:
+
