@@ -122,7 +122,9 @@ MEDIA_URL = '/media/'
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
-
+APP_ID = config("MICROSOFT_AUTH_CLIENT_ID")
+CLIENT_SECRET = config("MICROSOFT_AUTH_CLIENT_SECRET")
+TENANT = config("MICROSOFT_TENANT_ID")
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field

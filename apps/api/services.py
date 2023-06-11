@@ -25,24 +25,27 @@ def draft_attachment(file_path):
 
 def send_email(access_token, data):
     request_body = {
-        'message': {
-            'toRecipients': [{
-                'emailAddress': {
-                    'address': 'vladyslav.onishchuk.kmn.2020@lpnu.ua'
+        "message": {
+            "subject": "From django 2",
+            "body": {
+                "contentType": "Text",
+                "content": "The new cafeteria is open."
+            },
+            "toRecipients": [
+                {
+                    "emailAddress": {
+                        "address": "kngf4427@gmail.com"
+                    }
                 }
-            }]
-        },
-        'subject': 'Test Email From API',
-        'importance': 'normal',
-        'body': {
-            'contentType': 'HTML',
-            'content': 'This is a test email sent from <b>Python</b> API',
-        },
-        'attachments': [
-            draft_attachment('/requirements.txt'),
-        ]
+            ]
+        }
     }
     endpoint = GRAPH_ENDPOINT + '/me/sendMail'
     response = requests.post(url=endpoint, json=request_body, headers={'Authorization': access_token})
-    print('Response reason', response.reason)
+    return response
+
+
+def get_me(access_token):
+    endpoint = GRAPH_ENDPOINT + '/me'
+    response = requests.get(url=endpoint, headers={'Authorization': access_token})
     return response
