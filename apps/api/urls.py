@@ -7,4 +7,5 @@ app_name = 'api'
 urlpatterns = [
     path('get-auth-url/', views.GetAuthURL.as_view(), name='get-auth-url'),
     path('get-access-token/', views.GetAccessTockenAPIView.as_view(), name='get-access-token'),
+    path('send-email/', views.SendEmaiAPIView.as_view(), name='send-email'),
 ]
