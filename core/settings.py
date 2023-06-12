@@ -136,3 +136,7 @@ REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE': 10,
 }
+
+CLIENT_ID = config('MICROSOFT_AUTH_CLIENT_ID', default='CLIENT_ID')
+CLIENT_SECRET = config('MICROSOFT_AUTH_CLIENT_SECRET', default='CLIENT_ID')
+TENANT_ID = config('MICROSOFT_TENANT_ID', default='CLIENT_ID')
